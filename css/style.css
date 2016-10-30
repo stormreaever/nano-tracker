@@ -1,0 +1,67 @@
+
+html {
+  background: #fcfcfc;
+}
+body {
+  /*max-width: 1280px;*/
+  margin: 0 auto;
+  font-family: "courier prime sans", inconsolata, consolas, roboto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+.nano-bar:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.nano-bar {
+  width:100%;
+  height: 32px;
+  font-size: 12px;
+  padding: 8px;
+}
+.nano-bar .progress {
+  background: green;
+  position: relative
+}
+.nano-bar .togo {
+  position: relative;
+  top:0
+}
+.nano-bar .progress_status, .nano-bar .remaining_status {
+  color: #fff;
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  min-width: 80px;
+  text-align: center;
+  pointer-events: none;
+  z-index: 999;
+}
+.nano-bar .remaining_status {
+  color: #666;
+}
+.nano-bar div {
+  float: left;
+  /*overflow: hidden;*/
+  height: 32px;
+}
+.nano-bar .progress div span, .nano-bar .togo .remaining_pace {
+  position: relative;
+  top:32px;
+  background: #f0f0f0;
+  width: 160px;
+  padding: 4px 8px;
+  border-radius: 0 4px 4px 4px;
+
+  display: none;
+}
+
+.nano-bar .progress div:hover span, .nano-bar .togo:hover .remaining_pace {
+  display: block;
+  position: absolute;
+}
