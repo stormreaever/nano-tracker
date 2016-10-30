@@ -55,10 +55,10 @@ $(document).ready(function(){
       $(".nano-bar .progress").css("width", percent_progress + "%");
       $(".nano-bar .togo").css("width", (100 - percent_progress) + "%");
       // set the text for the progress overall
-      $(".nano-bar .progress_status").text(sum + " words");
-      $(".nano-bar .remaining_status").text( (data.writing["word_goal"] - sum) + " words remaining" );
+      $(".nano-bar .progress_status").text( num_spacify(sum, " ") + " words" );
+      $(".nano-bar .remaining_status").text( num_spacify((data.writing["word_goal"] - sum)," ") + " words remaining" );
       var pace = Math.floor((data.writing["word_goal"] - sum) / days_remaining);
-      $(".nano-bar .remaining_pace").text( pace + " words for pace" );
+      $(".nano-bar .remaining_pace").text( pace + " words per day to meet goal" );
 
       // draw a div for each data point
       for (var i = 0; i < num_days; i++) {

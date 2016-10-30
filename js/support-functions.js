@@ -26,3 +26,28 @@ function hsbToString(hsbObject) {
   var newString = "hsl(" + hsbObject["h"] + "," + hsbObject["s"] + "%," + hsbObject["b"] + "%)";
   return newString;
 }
+
+function num_spacify(num, spacer) {
+  var num_str = num.toString();
+  var num_digits = num_str.length; // get number of digits
+  // starting in ten thousands, add a spacer in each group of three
+  if (num_digits > 4) {
+    var num_string = ""; // new string we're going to build
+
+    num_leading_digits = num_digits % 3;
+
+    num_string += num_str.substring(0,num_leading_digits);
+
+    console.log(num_string);
+
+    for ( var i = num_leading_digits; i < num_digits; i += 3 ) {
+      num_string += spacer; // add spacer every group
+      num_string += num_str.substring( i, i + 3 );
+
+          console.log(num_string);
+    }
+    return num_string;
+  }
+
+  return num_str;
+}
