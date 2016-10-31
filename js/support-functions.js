@@ -1,3 +1,33 @@
+function monthName(monthNum) {
+  // give the full month name from int [0-11]
+  var months = ['January', 'February', 'March','April','May', 'June','July','August','September','October','November','December'];
+  return months[monthNum];
+}
+
+function getDaysFrom(ms_date) {
+  var _MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+  var a = new Date(ms_date);
+  var b = new Date();
+
+  // Discard the time and time-zone information.
+  var utc1 = a.valueOf();
+  var utc2 = b.valueOf();
+
+  return Math.floor((utc2 - utc1) / _MS_PER_DAY);
+}
+
+function addDays(oldDate, numDays) {
+  var _MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+  var ms_oldDate = oldDate.valueOf();
+  var ms_newDate = ms_oldDate + _MS_PER_DAY * numDays;
+  var newDate = new Date(ms_newDate);
+
+  return newDate;
+}
+
+
 function colorMap (color1, color2, this_step, total_steps) {
   // funtion that takes 2 HSL/HSB color arrays and returns a colour that is at a point in the middle as determined by this_step and total_steps
   // colorMap(black,white,1,3) returns black
@@ -38,13 +68,9 @@ function num_spacify(num, spacer) {
 
     num_string += num_str.substring(0,num_leading_digits);
 
-    console.log(num_string);
-
     for ( var i = num_leading_digits; i < num_digits; i += 3 ) {
       num_string += spacer; // add spacer every group
       num_string += num_str.substring( i, i + 3 );
-
-          console.log(num_string);
     }
     return num_string;
   }

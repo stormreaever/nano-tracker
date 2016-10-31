@@ -2,8 +2,11 @@
 	<html lang="en">
 	<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="js/graph-colors.js"></script>
+		<script src="js/sample-data.js"></script>
 		<script src="js/support-functions.js"></script>
-		<script src="js/graph-drawer.js"></script>
+		<script src="js/draw-graph.js"></script>
+		<script src="js/main.js"></script>
 
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -20,15 +23,35 @@
     </div>
 	</div>
 
-	<h1>NaNo Tracker</h1>
+  <div class="main">
 
-	<p>Track your progress above.</p>
+  	<h1>NaNo Tracker</h1>
 
-  <div id="test">
-    <p class="one">one</p>
-    <p class="two">two</p>
-    <p class="three">three</p>
-    <p class="four">four</p>
+  	<p>Track your progress below.</p>
+
+    <h2 class="project-info">Project Info</h2>
+
+    <form id="project-info">
+
+      <h3>Target Length (words)</h3>
+      <p><input type="text" id="target-length" name="target-length" value="50000" /></p>
+
+      <h3>Duration (days)</h3>
+      <p><input type="text" id="duration" name="duration" value="30" /></p>
+
+      <h3>Start Date</h3>
+      <p><input type="text" id="start-date" name="start-date" value="Oct 20, 2016" /></p>
+
+      <button id="save-info">Save</button>
+
+    </form>
+
+    <h2 class="project-info">Word Tracker</h2>
+
+    <form id="word-tracker">
+
+    </form>
+
   </div>
 
 	</body>

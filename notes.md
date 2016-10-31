@@ -12,41 +12,30 @@ A simple one-page app for tracking the progress of your work during NaNoWriMo.
 
 ### Sample UI
 
-#### Nov 3
+[progress bar]
 
-    [00000000000000000000000000000000]
+title
+project info fields
+- wordlength (50000)
+- total days (30)
+- start date (November 1)
 
-    NaNo Tracker
-    ------------
+data entry fields
 
-    3340 total words
+(
+	generates a number of fields 
+	depending on the start date(defined above)
+	and current date
+)
 
-    November 1
-    [1500    ]
+November 1
+[0               ]
 
-    November 2
-    [1500    ]
+November 2
+[0               ]
 
-    November 3
-    [340     ]
-
-#### Nov 4
-
-    [00000000000000000000000000000000]
-
-    NaNo Tracker
-    ------------
-
-    3840 total words
-
-    November 1
-    [1500    ]
-
-    November 2
-    [1500    ]
-
-    November 3
-    [340     ]
-
-    November 4
-    [500     ]
+(
+	on change of form fields,
+	the form sends a JSON object to the progress bar
+	and the progress bar updates with the new data
+)
