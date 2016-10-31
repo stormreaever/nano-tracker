@@ -35,6 +35,11 @@ $(document).ready(function(){
     saveData(dataObj);
     event.preventDefault();
   });
+  $('input.word_count').change(function() { // when form is submitted, save the data
+    updateDataObj()
+    drawGraph(dataObj);
+    saveData(dataObj);
+  });
 
   // update the data object with current data
   function updateDataObj() {
@@ -93,10 +98,10 @@ $(document).ready(function(){
       // add a title
       var objStartDate = new Date(data.writing.start_date);
       var thisDate = addDays(objStartDate,i);
-      thisDateString = monthName(thisDate.getMonth()) + " " + thisDate.getDate() + ", " + thisDate.getFullYear();
+      thisDateString = monthName(thisDate.getMonth()) + " " + thisDate.getDate();
       newCount.append("<h4>" + thisDateString + "</h4>");
       // add an input box
-      newCount.append('<p><input type="text" id="count-day-' + i + '" name="count-day-' + i + '" value="' + word_counts[i] + '" /></p>');
+      newCount.append('<p><input type="text" class="word_count" id="count-day-' + i + '" name="count-day-' + i + '" value="' + word_counts[i] + '" /></p>');
 
 
       $("#word-tracker").append(newCount);
