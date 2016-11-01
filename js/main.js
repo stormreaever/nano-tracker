@@ -38,8 +38,9 @@ var dataObj;
 
   $('#button-expand').click(function(event) { // toggle the expand menu
     $('.project-info-edit').slideToggle(200);
-    event.preventDefault();
-    return false;
+    refreshScreen();
+    drawBoxes(dataObj);
+    $('#word-tracker input').bind("change", refreshScreen);
   });
   $('input.word_count').change(function() { // when form is submitted, save the data
     refreshScreen();
@@ -47,7 +48,6 @@ var dataObj;
 
   $('#project-info button#save-info').click(function(event) { // when form is submitted, save the data
     closeExpand();
-    var newDate = $( "#start-date" ).val();
     refreshScreen();
     drawBoxes(dataObj);
     $('#word-tracker input').bind("change", refreshScreen);
