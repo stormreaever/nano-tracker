@@ -4,17 +4,25 @@ $(document).ready(function(){
 
   // business loop
 
+var dataObj;
 
   if (localStorage.getItem("writing")) {
     // get the JSON data from the localStorage
-    var dataObj = JSON.parse( localStorage.getItem("writing") );
+    dataObj = JSON.parse( localStorage.getItem("writing") );
+    if (isNaN(dataObj.writing.start_date)) {
+      setDefaultData();
+    }
   } else {
     // set a default data set
-    var dataObj = {
+    setDefaultData();
+  }
+
+  function setDefaultData() {
+    dataObj = {
       "writing":{
         "word_goal" : 50000,
         "duration" : 30,
-        "start_date" : Date.parse('Nov 1, 2016'),
+        "start_date" : Date.parse('2016-11-01'),
         "daily_progress" : [
           0
         ]
@@ -29,7 +37,8 @@ $(document).ready(function(){
 
 
   $('#project-info').submit(function(event) { // when form is submitted, save the data
-    updateDataObj()
+    var newDate = $( "#start-date" ).val();
+    updateDataObj();
     drawBoxes(dataObj);
     drawGraph(dataObj);
     saveData(dataObj);
@@ -43,8 +52,7 @@ $(document).ready(function(){
 
   // update the data object with current data
   function updateDataObj() {
-    var ms_start_date = Date.parse($( "input:text[name=start-date]" ).val());
-
+    var ms_start_date = Date.parse($( "#start-date" ).val());
     var newObj = {
       "writing":{
         "word_goal" : $( "input:text[name=target-length]" ).val(),
@@ -79,12 +87,12 @@ $(document).ready(function(){
     // populate boxes with JSON data
     var start_date = new Date(data.writing.start_date);
 
-    var start_dateString = monthName(start_date.getMonth()) + " " + start_date.getDate() + ", " + start_date.getFullYear();
+    var start_dateString = start_date.getFullYear() + '-' + leadingZero(start_date.getMonth() + 1) + '-' + leadingZero(start_date.getDate() + 1);
 
     $( "input:text[name=target-length]" ).val(data.writing.word_goal);
     $( "input:text[name=duration]" ).val(data.writing.duration);
-    $( "input:text[name=start-date]" ).val(start_dateString);
-
+    $( "#start-date" ).val(start_dateString);
+    document.getElementById("start-date").value = start_dateString;
 
     // remove word count boxes
     $("#word-tracker div").remove();
@@ -92,7 +100,7 @@ $(document).ready(function(){
     // draw boxes in the in word tracker form with object data in it
     var word_counts = data.writing.daily_progress;
 
-    for (var i = 0; i < getDaysFrom(data.writing.start_date) + 1; i++) {
+    for (var i = getDaysFrom(data.writing.start_date) - 1; i >= 0; i--) {
       //create div
       var newCount = $("<div></div>");
       // add a title

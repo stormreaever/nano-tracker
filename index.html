@@ -3,7 +3,6 @@
 	<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="js/graph-colors.js"></script>
-		<script src="js/sample-data.js"></script>
 		<script src="js/support-functions.js"></script>
 		<script src="js/draw-graph.js"></script>
 		<script src="js/main.js"></script>
@@ -14,14 +13,40 @@
 	</head>
 	<body>
 
-	<div class="nano-bar">
-		<div class="progress">
-      <span class="progress_status">2500 words</span>
-    </div>
-    <div class="togo">
-      <span class="remaining_status">2500 words</span>
-      <span class="remaining_pace">1500 words per day to make pace</span>
-    </div>
+	<div id="info-bar">
+		<div class="nano-bar">
+			<div class="progress">
+	      <span class="progress_status">2500 words</span>
+	    </div>
+	    <div class="togo">
+	      <span class="remaining_status">2500 words</span>
+	      <span class="remaining_pace">1500 words per day to make pace</span>
+	    </div>
+		</div>
+
+		<div class="project-info-bar">
+
+
+	    <form id="project-info">
+				<span class="bar-title">Nano Tracker</span>
+				<span class="bar-words">50 000 words</span>
+				<span class="bar-days">30 days</span>
+
+
+				<button id="save-info">Save</button>
+
+	      <h3>Target Length (words)</h3>
+	      <p><input type="text" id="target-length" name="target-length" value="50000" /></p>
+
+	      <h3>Duration (days)</h3>
+	      <p><input type="text" id="duration" name="duration" value="30" /></p>
+
+	      <h3>Start Date</h3>
+	      <p><input type="date" id="start-date" name="start-date" value="2016-11-01" /></p>
+
+	    </form>
+		</div>
+
 	</div>
 
   <div class="main">
@@ -32,20 +57,6 @@
 
     <h2 class="project-info">Project Info</h2>
 
-    <form id="project-info">
-
-      <h3>Target Length (words)</h3>
-      <p><input type="text" id="target-length" name="target-length" value="50000" /></p>
-
-      <h3>Duration (days)</h3>
-      <p><input type="text" id="duration" name="duration" value="30" /></p>
-
-      <h3>Start Date</h3>
-      <p><input type="text" id="start-date" name="start-date" value="Oct 20, 2016" /></p>
-
-      <p><button id="save-info">Save</button></p>
-
-    </form>
 
     <h2 class="project-info">How Many Words Did You Write Today?</h2>
 

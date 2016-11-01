@@ -4,6 +4,11 @@ function monthName(monthNum) {
   return months[monthNum];
 }
 
+function leadingZero(num) {
+  var numStr = ('0' + num).slice(-2);
+  return numStr;
+}
+
 function getDaysFrom(ms_date) {
   var _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
@@ -11,8 +16,8 @@ function getDaysFrom(ms_date) {
   var b = new Date();
 
   // Discard the time and time-zone information.
-  var utc1 = a.valueOf();
-  var utc2 = b.valueOf();
+  var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+  var utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
 
   return Math.floor((utc2 - utc1) / _MS_PER_DAY);
 }
@@ -21,7 +26,7 @@ function addDays(oldDate, numDays) {
   var _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
   var ms_oldDate = oldDate.valueOf();
-  var ms_newDate = ms_oldDate + _MS_PER_DAY * numDays;
+  var ms_newDate = ms_oldDate + _MS_PER_DAY * (numDays + 1);
   var newDate = new Date(ms_newDate);
 
   return newDate;
