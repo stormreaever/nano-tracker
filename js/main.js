@@ -22,7 +22,7 @@ var dataObj;
   function setDefaultData() {
     dataObj = {
       "writing":{
-        "title" : "Nano Project",
+        "title" : "NaNoWriMo Novel",
         "word_goal" : 50000,
         "duration" : 30,
         "start_date" : Date.parse('2016-11-01'),
