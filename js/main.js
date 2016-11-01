@@ -55,8 +55,8 @@ var dataObj;
     var ms_start_date = Date.parse($( "#start-date" ).val());
     var newObj = {
       "writing":{
-        "word_goal" : $( "input:text[name=target-length]" ).val(),
-        "duration" : $( "input:text[name=duration]" ).val(),
+        "word_goal" : $( "#target-length" ).val(),
+        "duration" : $( "#duration" ).val(),
         "start_date" : ms_start_date,
         "daily_progress" : [
         ]
@@ -89,9 +89,9 @@ var dataObj;
 
     var start_dateString = start_date.getFullYear() + '-' + leadingZero(start_date.getMonth() + 1) + '-' + leadingZero(start_date.getDate() + 1);
 
-    $( "input:text[name=target-length]" ).val(data.writing.word_goal);
-    $( "input:text[name=duration]" ).val(data.writing.duration);
-    $( "#start-date" ).val(start_dateString);
+    $( "input#target-length" ).val(data.writing.word_goal);
+    $( "input#duration" ).val(data.writing.duration);
+    $( "input#start-date" ).val(start_dateString);
     document.getElementById("start-date").value = start_dateString;
 
     // remove word count boxes
@@ -109,7 +109,7 @@ var dataObj;
       thisDateString = monthName(thisDate.getMonth()) + " " + thisDate.getDate();
       newCount.append("<h4>" + thisDateString + "</h4>");
       // add an input box
-      newCount.append('<p><input type="text" class="word_count" id="count-day-' + i + '" name="count-day-' + i + '" value="' + word_counts[i] + '" /></p>');
+      newCount.append('<p><input type="number" class="word_count" id="count-day-' + i + '" name="count-day-' + i + '" value="' + word_counts[i] + '" /></p>');
 
 
       $("#word-tracker").append(newCount);
