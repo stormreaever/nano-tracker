@@ -28,37 +28,50 @@
 
 
 	    <form id="project-info">
-				<span class="bar-title">Nano Tracker</span>
-				<span class="bar-words">50 000 words</span>
+				<span class="bar-title">Nano Tracker</span> /
+				<span class="bar-words">50 000 words</span> /
 				<span class="bar-days">30 days</span>
 
 
-				<button id="save-info">Save</button>
+				<button id="save-info" type="button">Save</button>
 
-	      <h3>Target Length (words)</h3>
-	      <p><input type="number" id="target-length" name="target-length" value="50000" /></p>
+				<div class="project-info-edit">
+		      <span class="project-info-segment">
+						<h3>Project title: </h3>
+			      <input type="text" id="project-title" name="project-title" value="NaNo" />
+					</span>
 
-	      <h3>Duration (days)</h3>
-	      <p><input type="number" id="duration" name="duration" value="30" /></p>
+					<span class="project-info-segment">
+			      <h3>Word Goal: </h3>
+			      <input type="number" id="target-length" name="target-length" value="50000" />
+					</span>
 
-	      <h3>Start Date</h3>
-	      <p><input type="date" id="start-date" name="start-date" value="2016-11-01" /></p>
+					<span class="project-info-segment">
+			      <h3>Duration (days): </h3>
+			      <input type="number" id="duration" name="duration" value="30" />
+					</span>
+
+		      <span class="project-info-segment">
+			      <h3>Start Date: </h3>
+			      <input type="date" id="start-date" name="start-date" value="2016-11-01" />
+					</span>
+				</div>
 
 	    </form>
+
+			<div id="button-expand">
+				<svg id="expand" width="12" height="8">
+					<rect x="0" y="0"width="12" height="2" style="fill:#ddd" />
+					<rect x="0" y="6"width="12" height="2" style="fill:#ddd" />
+				</svg>
+			</div>
 		</div>
 
 	</div>
 
   <div class="main">
 
-  	<h1>NaNo Tracker</h1>
-
-  	<p>Track your progress below.</p>
-
-    <h2 class="project-info">Project Info</h2>
-
-
-    <h2 class="project-info">How Many Words Did You Write Today?</h2>
+  	<h1>How Many Words Did You Write Today?</h1>
 
     <form id="word-tracker">
 

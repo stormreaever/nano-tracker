@@ -20,6 +20,7 @@ var dataObj;
   function setDefaultData() {
     dataObj = {
       "writing":{
+        "title" : "Nano Project",
         "word_goal" : 50000,
         "duration" : 30,
         "start_date" : Date.parse('2016-11-01'),
@@ -35,26 +36,39 @@ var dataObj;
 
   drawGraph(dataObj);
 
-
-  $('#project-info').submit(function(event) { // when form is submitted, save the data
-    var newDate = $( "#start-date" ).val();
-    updateDataObj();
-    drawBoxes(dataObj);
-    drawGraph(dataObj);
-    saveData(dataObj);
+  $('#button-expand').click(function(event) { // toggle the expand menu
+    $('.project-info-edit').slideToggle(200);
     event.preventDefault();
+    return false;
   });
   $('input.word_count').change(function() { // when form is submitted, save the data
-    updateDataObj()
+    refreshScreen();
+  });
+
+  $('#project-info button#save-info').click(function(event) { // when form is submitted, save the data
+    var newDate = $( "#start-date" ).val();
+    refreshScreen();
+    drawBoxes(dataObj);
+    $('#word-tracker input').bind("change", refreshScreen);
+    event.preventDefault();
+    return false;
+  });
+  $('input.word_count').change(function() { // when form is submitted, save the data
+    refreshScreen();
+  });
+
+  function refreshScreen() {
+    updateDataObj();
     drawGraph(dataObj);
     saveData(dataObj);
-  });
+  }
 
   // update the data object with current data
   function updateDataObj() {
     var ms_start_date = Date.parse($( "#start-date" ).val());
     var newObj = {
       "writing":{
+        "title" : $( "#project-title" ).val(),
         "word_goal" : $( "#target-length" ).val(),
         "duration" : $( "#duration" ).val(),
         "start_date" : ms_start_date,
@@ -86,11 +100,16 @@ var dataObj;
 
     // populate boxes with JSON data
     var start_date = new Date(data.writing.start_date);
+    start_date = addDays(data.writing.start_date,0);
 
-    var start_dateString = start_date.getFullYear() + '-' + leadingZero(start_date.getMonth() + 1) + '-' + leadingZero(start_date.getDate() + 1);
+    var start_dateString = start_date.getFullYear() + '-' + leadingZero(start_date.getMonth()+1) + '-' + leadingZero(start_date.getDate() );
 
+    $( "input#project-title" ).val(data.writing.title);
+    $( ".bar-title" ).text(data.writing.title);
     $( "input#target-length" ).val(data.writing.word_goal);
+    $( ".bar-words" ).text(num_spacify(data.writing.word_goal, " ") + " words");
     $( "input#duration" ).val(data.writing.duration);
+    $( ".bar-days" ).text(num_spacify(data.writing.duration, " ") + " words");
     $( "input#start-date" ).val(start_dateString);
     document.getElementById("start-date").value = start_dateString;
 
@@ -112,8 +131,10 @@ var dataObj;
       newCount.append('<p><input type="number" class="word_count" id="count-day-' + i + '" name="count-day-' + i + '" value="' + word_counts[i] + '" /></p>');
 
 
+
       $("#word-tracker").append(newCount);
     }
+
   }
 
 });
