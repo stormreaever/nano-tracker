@@ -13,18 +13,30 @@ body {
   box-sizing: border-box;
 }
 
+input {
+  font-family: "courier prime sans", inconsolata, consolas, menlo, monospace;
+  padding: 2px 4px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  width: 420px;
+}
+input.word_count {
+  width: 140px;
+  font-size: 20px;
+}
+
 /*
   MAIN
 */
 
 .main {
-  max-width: 960px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 12px;
   margin-top: 135px;
 }
 .main form {
-  margin-left: 32px;
+  margin-left: 12px;
 }
 
 /*
@@ -41,13 +53,34 @@ body {
 }
 
 #project-info {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 12px;
   margin-top: 12px;
   padding-top: 20px;
   padding-bottom: 8px;
-  border-top: 1px solid #e8e8e8;
+}
+.bar-title {
+  font-weight: bold;
+  margin-right: 12px;
+}
+.bar-words, .bar-days {
+  margin-left: 12px;
+  margin-right: 12px;
 }
 .project-info-edit {
   display: none;
+  padding-top:32px;
+}
+.project-info-segment {
+  margin-right: 24px;
+  display: block;
+  margin: 8px 0;
+}
+.project-info-segment h3 {
+  font-size: 14px;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
 }
 
 #button-expand {
@@ -92,6 +125,13 @@ button#save-info:focus {
   content: "";
   display: table;
   clear: both;
+
+/* put the divider bar in */
+  width: 100%;
+  height: 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e8e8e8;
+
 }
 .nano-bar {
   width:100%;
@@ -142,4 +182,34 @@ button#save-info:focus {
 .nano-bar .progress div:hover span, .nano-bar .togo:hover .remaining_pace {
   display: block;
   position: absolute;
+}
+
+
+
+@media (max-width: 640px){
+
+  .main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 12px;
+    margin-top: 0;
+  }
+
+  #info-bar {
+    position: static;
+  }
+
+  button#save-info {
+    margin-top: 24px;
+    display: block;
+    float: none;
+  }
+
+}
+@media (max-width: 480px){
+
+  input {
+    width: 100%;
+  }
+
 }

@@ -46,6 +46,7 @@ var dataObj;
   });
 
   $('#project-info button#save-info').click(function(event) { // when form is submitted, save the data
+    closeExpand();
     var newDate = $( "#start-date" ).val();
     refreshScreen();
     drawBoxes(dataObj);
@@ -61,6 +62,14 @@ var dataObj;
     updateDataObj();
     drawGraph(dataObj);
     saveData(dataObj);
+  }
+
+  function closeExpand() {
+    console.log('closed');
+    if ($(".project-info-edit").is( ":visible" )){
+      $(".project-info-edit").toggle(200);
+        console.log('toggled');
+    }
   }
 
   // update the data object with current data
@@ -109,7 +118,7 @@ var dataObj;
     $( "input#target-length" ).val(data.writing.word_goal);
     $( ".bar-words" ).text(num_spacify(data.writing.word_goal, " ") + " words");
     $( "input#duration" ).val(data.writing.duration);
-    $( ".bar-days" ).text(num_spacify(data.writing.duration, " ") + " words");
+    $( ".bar-days" ).text(num_spacify(data.writing.duration, " ") + " days");
     $( "input#start-date" ).val(start_dateString);
     document.getElementById("start-date").value = start_dateString;
 
