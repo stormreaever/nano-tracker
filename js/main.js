@@ -9,7 +9,6 @@ var dataObj;
   if (localStorage.getItem("writing")) {
     // get the JSON data from the localStorage
     dataObj = JSON.parse( localStorage.getItem("writing") );
-    console.log(dataObj.writing.start_date);
     if (!(dataObj.writing.start_date > 0) ) {
       console.log('default');
       setDefaultData();
@@ -67,10 +66,8 @@ var dataObj;
   }
 
   function closeExpand() {
-    console.log('closed');
     if ($(".project-info-edit").is( ":visible" )){
       $(".project-info-edit").toggle(200);
-        console.log('toggled');
     }
   }
 

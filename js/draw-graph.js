@@ -7,6 +7,7 @@ function drawGraph(data) {
   $(".togo div").remove();
 
   var num_days = data.writing.daily_progress.length;
+  num_days = getDaysFrom(data.writing.start_date);
   // calculate total words written
   var wordSum = 0;
   for (var i = 0; i < num_days; i++) {
