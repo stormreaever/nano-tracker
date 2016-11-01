@@ -9,7 +9,9 @@ var dataObj;
   if (localStorage.getItem("writing")) {
     // get the JSON data from the localStorage
     dataObj = JSON.parse( localStorage.getItem("writing") );
-    if (isNaN(dataObj.writing.start_date)) {
+    console.log(dataObj.writing.start_date);
+    if (!(dataObj.writing.start_date > 0) ) {
+      console.log('default');
       setDefaultData();
     }
   } else {
@@ -75,6 +77,9 @@ var dataObj;
   // update the data object with current data
   function updateDataObj() {
     var ms_start_date = Date.parse($( "#start-date" ).val());
+      if (!(ms_start_date > 0) ) {
+        ms_start_date = Date.parse('2016-11-01');
+      }
     var newObj = {
       "writing":{
         "title" : $( "#project-title" ).val(),
